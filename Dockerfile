@@ -20,6 +20,7 @@ EXPOSE 10000
 # Copiar el archivo de credenciales de Firebase
 COPY ./Backend/chatbot-e10ff-firebase-adminsdk-o5erg-1fda4a84aa.json /app/Backend/chatbot-e10ff-firebase-adminsdk-o5erg-1fda4a84aa.json
 
+
 # Establecer la variable de entorno para que apunte a ese archivo
 ENV FIREBASE_CREDENTIALS="/app/Backend/chatbot-e10ff-firebase-adminsdk-o5erg-1fda4a84aa.json"
 
