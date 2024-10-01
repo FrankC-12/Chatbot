@@ -17,6 +17,4 @@ services:
     ports:
       - "8080:8080"  # Mapea el puerto 8080 del contenedor al 8080 de tu máquina
     restart: always  # Reinicia el contenedor automáticamente si falla
-    environment:
-      # Puedes agregar aquí cualquier variable de entorno que Ollama requiera
-      - MODEL_NAME=your_model_name  # Especifica el nombre del modelo que quieres usar
+    
