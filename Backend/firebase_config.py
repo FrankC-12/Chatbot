@@ -29,7 +29,7 @@ if firebase_credentials_path and os.path.exists(firebase_credentials_path):
     cred = credentials.Certificate(firebase_credentials_path)
     firebase_admin.initialize_app(cred)
 else:
-    raise ValueError("Firebase credentials file not found or path not set in environment variables")
+    raise ValueError(f"Firebase credentials file {firebase_credentials_path} not found or path not set in environment variables")
 
 # Inicializar Firestore
 db = firestore.client()
