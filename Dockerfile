@@ -25,5 +25,6 @@ COPY ./Backend/chatbot-e10ff-firebase-adminsdk-o5erg-db22832652.json /app/Backen
 # Establecer la variable de entorno para que apunte a ese archivo
 ENV FIREBASE_CREDENTIALS="/app/Backend/chatbot-e10ff-firebase-adminsdk-o5erg-db22832652.json"
 
+
 # Comando para correr la aplicación FastAPI
 CMD ["uvicorn", "Backend.main:app", "--host", "0.0.0.0", "--port", "10000"]
