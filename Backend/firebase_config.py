@@ -50,19 +50,47 @@
 #     raise ValueError("Firebase credentials not found in environment variables")
 
 # db = firestore.client()
+# import os
+# import json
+# import firebase_admin
+# from firebase_admin import credentials
+
+# # Lee las credenciales desde la variable de entorno
+# firebase_credentials_json = os.getenv("FIREBASE_CREDENTIALS")
+
+# if not firebase_credentials_json:
+#     raise ValueError("Firebase credentials not found in environment variables")
+
+# # Carga las credenciales desde el JSON
+# firebase_credentials = json.loads(firebase_credentials_json)
+
+# cred = credentials.Certificate(firebase_credentials)
+# firebase_admin.initialize_app(cred)
+
 import os
-import json
+from dotenv import load_dotenv
 import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, firestore
 
-# Lee las credenciales desde la variable de entorno
-firebase_credentials_json = os.getenv("FIREBASE_CREDENTIALS")
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
-if not firebase_credentials_json:
-    raise ValueError("Firebase credentials not found in environment variables")
+# Crear las credenciales usando las variables de entorno
+firebase_credentials = {
+    "type": os.getenv("FIREBASE_TYPE"),
+    "project_id": os.getenv("FIREBASE_PROJECT_ID"),
+    "private_key_id": os.getenv("FIREBASE_PRIVATE_KEY_ID"),
+    "private_key": os.getenv("FIREBASE_PRIVATE_KEY").replace('\\n', '\n'),
+    "client_email": os.getenv("FIREBASE_CLIENT_EMAIL"),
+    "client_id": os.getenv("FIREBASE_CLIENT_ID"),
+    "auth_uri": os.getenv("FIREBASE_AUTH_URI"),
+    "token_uri": os.getenv("FIREBASE_TOKEN_URI"),
+    "auth_provider_x509_cert_url": os.getenv("FIREBASE_AUTH_PROVIDER_CERT_URL"),
+    "client_x509_cert_url": os.getenv("FIREBASE_CLIENT_CERT_URL")
+}
 
-# Carga las credenciales desde el JSON
-firebase_credentials = json.loads(firebase_credentials_json)
-
+# Usar las credenciales de las variables de entorno
 cred = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(cred)
+db = firestore.client()
+
