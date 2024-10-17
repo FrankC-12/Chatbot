@@ -9,7 +9,7 @@ services:
       - "10000:10000"  # Mapea el puerto 10000 del contenedor al 10000 de tu máquina
     environment:
       - OLLAMA_API_URL=http://ollama:8080  # URL de la API de Ollama, ajusta según sea necesario
-      - FIREBASE_CREDENTIALS=Backend/chatbot-e10ff-firebase-adminsdk-o5erg-1fda4a84aa.json
+      - FIREBASE_CREDENTIALS=/app/Backend/chatbot-e10ff-firebase-adminsdk-o5erg-1fda4a84aa.json
     volumes:
       - .:/app  # Monta el directorio actual en /app dentro del contenedor
 
