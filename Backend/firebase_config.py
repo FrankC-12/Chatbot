@@ -90,6 +90,8 @@ firebase_credentials = {
 }
 
 # Usar las credenciales de las variables de entorno
+
+print(firebase_credentials["type"])
 cred = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
